@@ -9,15 +9,20 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
 " complete
 " Plugin 'Valloric/YouCompleteMe'
+
 " tree
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+
 " molokai
 Plugin 'tomasr/molokai'
+
 " syntastic 
 Plugin 'scrooloose/syntastic'
+
 " css
 Plugin 'JulesWang/css.vim'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -25,15 +30,10 @@ Plugin 'cakebaker/scss-syntax.vim'
 " git
 Plugin 'tpope/vim-fugitive'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
 
-Plugin 'jiangmiao/auto-pairs.git'
-
-"Bundle 'git@github.com:jiangmiao/auto-pairs.git'
-
-" Bundle 'git@github.com:ervandew/eclim.git'
-
-" Plugin 'airblade/vim-gitgutter'
-" Plugin 'https://github.com/kien/ctrlp.vim'
+" finder
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,11 +59,17 @@ set shiftwidth=4
 syntax on
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
-" other
+" numbers
 set number
 set relativenumber
+
+" highlight
 set hlsearch
+
+" mouse
 set mouse=a
+
+" other
 set foldlevel=99
 set ruler
 set cursorcolumn  " 列高亮
