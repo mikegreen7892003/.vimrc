@@ -1,0 +1,125 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" complete
+" Plugin 'Valloric/YouCompleteMe'
+" tree
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+" molokai
+Plugin 'tomasr/molokai'
+" syntastic 
+Plugin 'scrooloose/syntastic'
+" css
+Plugin 'JulesWang/css.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+
+" git
+Plugin 'tpope/vim-fugitive'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'jiangmiao/auto-pairs.git'
+
+"Bundle 'git@github.com:jiangmiao/auto-pairs.git'
+
+" Bundle 'git@github.com:ervandew/eclim.git'
+
+" Plugin 'airblade/vim-gitgutter'
+" Plugin 'https://github.com/kien/ctrlp.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+" filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype on
+filetype plugin on
+filetype plugin indent on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+syntax on
+au BufRead,BufNewFile *.scss set filetype=scss.css
+
+" other
+set number
+set relativenumber
+set hlsearch
+set mouse=a
+set foldlevel=99
+set ruler
+set cursorcolumn  " 列高亮
+set cursorline  " 行高亮
+set bs=indent,eol,start
+" set backup
+set history=100
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  augroup redhat
+  autocmd!
+  " In text files, always limit the width of text to 78 characters
+  autocmd BufRead *.txt set tw=78
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+  autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+  " start with spec file template
+  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+  augroup END
+endif
+
+" color
+let g:molokai_original = 1
+let g:rehash256 = 1
+set t_Co=256
+
+colorscheme molokai
+set background=dark
+
+" tree
+" autocmd vimenter * NERDTree
+map <C-n> :NERDTreeTabsToggle<CR>
+let g:NERDTreeUseSimpleIndicator = 1
+
+" fugitive
+ set diffopt+=vertical
+
+" pep8
+" let g:pymode_lint_ignore="E501,W601"
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" let g:syntastic_python_checkers = ['pep8']
+let g:syntastic_python_checkers = ['pylint']
+
+""" Custom configurations
+" pdb
+nnoremap <F10> Oimport pdb;pdb.set_trace()<Esc>
+imap jk <Esc>
+
+" colorcolumn marker
+:set colorcolumn="79,120,".join(range(200,300),",")
