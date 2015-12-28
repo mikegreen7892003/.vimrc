@@ -75,6 +75,9 @@ set ruler
 set cursorcolumn  " 列高亮
 set cursorline  " 行高亮
 set bs=indent,eol,start
+set nopaste
+set pastetoggle=<F2>
+
 " set backup
 set history=100
 
