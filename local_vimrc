@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " complete
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " tree
 Plugin 'scrooloose/nerdtree'
@@ -34,6 +34,13 @@ Plugin 'airblade/vim-gitgutter'
 
 " finder
 Plugin 'ctrlpvim/ctrlp.vim'
+
+" tagbar
+Plugin 'majutsushi/tagbar'
+
+" vim-airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,3 +139,8 @@ imap jk <Esc>
 
 " colorcolumn marker
 :set colorcolumn="79,120,".join(range(200,300),",")
+
+" airline
+set laststatus=2
+let g:airline_section_b = '%{strftime("%c")}'
+let g:airline_section_y = 'BN: %{bufnr("%")}'
