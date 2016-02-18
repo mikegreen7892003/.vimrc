@@ -15,7 +15,6 @@ Plugin 'Valloric/YouCompleteMe'
 
 " tree
 Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 " molokai
 Plugin 'tomasr/molokai'
@@ -84,6 +83,7 @@ set cursorline  " 行高亮
 set bs=indent,eol,start
 set nopaste
 set pastetoggle=<F2>
+set laststatus=2
 
 " set backup
 set history=100
@@ -116,8 +116,8 @@ set background=dark
 
 " tree
 " autocmd vimenter * NERDTree
-map <C-n> :NERDTreeTabsToggle<CR>
-let g:NERDTreeUseSimpleIndicator = 1
+" map <C-n> :NERDTreeTabsToggle<CR>
+" let g:NERDTreeUseSimpleIndicator = 1
 
 " fugitive
  set diffopt+=vertical
@@ -141,6 +141,17 @@ imap jk <Esc>
 :set colorcolumn="79,120,".join(range(200,300),",")
 
 " airline
-set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
